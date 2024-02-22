@@ -1,0 +1,15 @@
+# API version
+apiVersion: 1
+
+# List of dashboard providers
+providers:
+  # Prometheus dashboard provider configuration
+  - name: "Prometheus" # Name of the provider
+    orgId: 1 # ID of the organization
+    type: file # Type of the provider
+    disableDeletion: false # Whether deletion is disabled
+    updateIntervalSeconds: 10 # How frequently to update dashboards
+    allowUiUpdates: false # Whether updates from the UI are allowed
+    options:
+      path: /var/lib/grafana/dashboards # Path to the dashboards
+      foldersFromFilesStructure: true # Whether to create folders from the file structure

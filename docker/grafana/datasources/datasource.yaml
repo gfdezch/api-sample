@@ -1,0 +1,33 @@
+# List of datasources
+datasources:
+  # Jaeger datasource configuration
+  - name: Jaeger # Name of the datasource
+    access: proxy # How Grafana connects to the datasource
+    type: jaeger # Type of the datasource
+    uid: JaegerDatasource # Unique identifier of the datasource
+    url: http://jaeger:16686 # URL of the datasource
+    editable: true # Whether the datasource is editable
+    isDefault: false # Whether this is the default datasource
+
+  # Loki datasource configuration
+  - name: loki # Name of the datasource
+    type: loki # Type of the datasource
+    access: proxy # How Grafana connects to the datasource
+    editable: true # Whether the datasource is editable
+    url: http://loki:3100 # URL of the datasource
+    readOnly: false # Whether the datasource is read-only
+    jsonData: # Additional JSON data
+      derivedFields: # Fields derived from log lines
+        - datasourceUid: LokiDatasource # UID of the datasource to link to
+          matcherRegex: "traceID=(\\w+)" # Regex to match in log lines
+          name: "TraceId" # Name of the derived field
+          url: "$${__value.raw}" # URL template for the derived field
+          
+  # Prometheus datasource configuration
+  - name: Prometheus # Name of the datasource
+    access: proxy # How Grafana connects to the datasource
+    type: prometheus # Type of the datasource
+    uid: PrometheusDatasource # Unique identifier of the datasource
+    url: http://prometheus:9090 # URL of the datasource
+    editable: true # Whether the datasource is editable
+    isDefault: true # Whether this is the default datasource

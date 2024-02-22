@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.gfc</groupId>
+	<artifactId>api-sample</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>sample</name>
+	<description>Sample observable API project implementing vertical slicing and hexagonal architecture using Spring Boot and Testcontainers.</description>
+	<properties>
+		<java.version>21</java.version>
+		<springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+		<springdoc-openapi-starter-webmvc-ui.version>2.2.0</springdoc-openapi-starter-webmvc-ui.version>
+		<opentracing-spring-jaeger-cloud-starter-version>3.3.1</opentracing-spring-jaeger-cloud-starter-version>
+		<loki-logback-appender-version>1.4.2</loki-logback-appender-version>
+		<mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
+	</properties>
+	<dependencies>
+		<!-- Spring boot rest ws-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+
+		<!-- Spring boot aop -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+		<!-- Springdoc OpenAPI UI for generating API documentation and Swagger UI -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc-openapi-starter-webmvc-ui.version}</version>
+		</dependency>
+
+		<!-- Springdoc OpenAPI Web MVC UI Starter for generating API documentation and Swagger UI for Spring Web MVC applications -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>${springdoc-openapi-ui.version}</version>
+		</dependency>
+
+		<!-- Spring Boot Actuator provides production-ready features to monitor and manage your application -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
+		<!-- Spring Boot MyBatis support for mapping Java POJOs to SQL statements -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis-spring-boot-starter.version}</version>
+		</dependency>
+
+		<!-- Sql Server driver -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>			
+		</dependency>
+
+		<!-- Flyway is an open-source database migration tool. It strongly favors simplicity and convention over configuration. -->
+		<dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
+		<!-- Flyway SQL Server -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-sqlserver</artifactId>			
+		</dependency>		
+
+		<!-- Micrometer Prometheus registry for exporting metrics to Prometheus -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+		<!-- OpenTracing is a set of APIs, libraries, agents, and collector services which allow you to (a) instrument your code to generate tracing data and (b) ship it to an observability platform where you can analyze it to troubleshoot latency problems -->
+		<dependency>
+			<groupId>io.opentracing.contrib</groupId>
+			<artifactId>opentracing-spring-jaeger-cloud-starter</artifactId>			
+			<version>${opentracing-spring-jaeger-cloud-starter-version}</version>
+		</dependency>		
+
+	   <!-- Loki Logback Appender is a library that allows Logback to send logs directly to Loki -->
+		<dependency>
+			<groupId>com.github.loki4j</groupId>
+			<artifactId>loki-logback-appender</artifactId>
+			<version>${loki-logback-appender-version}</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Testcontainers is a Java library that supports JUnit tests, providing lightweight, throwaway instances of common databases, Selenium web browsers, or anything else that can run in a Docker container. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-testcontainers</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Testcontainers JUnit Jupiter -->
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Testcontainers SQL Server -->
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mssqlserver</artifactId>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+    </plugins>
+</build>
+</project>
